@@ -1,21 +1,21 @@
-# FRANCE CREATOR V2
+# FRANCE CREATOR V3.1 — Cut Optimizer
 
-Prototipo mobile-first per casse e gabbie in legno.
+Add-on integrato per l'ottimizzazione delle tavole da 2,2 cm.
 
-## Motore V2 — cassa chiusa di tavole
-- Misure interne nette separate dall’ingombro esterno totale.
-- Spessore delle tavole dei pannelli separato dallo spessore delle tavolette.
-- Testate totalmente interne.
-- Ogni estremità aggiunge: spessore pannello + spessore tavoletta.
-- Altezze, fondo e coperchio arrivano a filo esterno delle testate complete.
-- Fondo e coperchio restano dentro alle Tavolette altezze.
-- Altezza esterna: interno + Legni sotto + due pannelli orizzontali + Tavoletta coperchio.
+## Parametri fissi
+- Pacchi: 401,5 cm · 450 cm · 504 cm
+- Perdita lama prudenziale: 0,5 cm per ogni taglio
+- Anche il rifilo finale dello scarto consuma 0,5 cm
 
-## Funzioni
-- Tre tipologie iniziali: tavole, pannelli e gabbia.
-- Più misure nello stesso piano.
-- Vista schematica, esploso, distinta, totali e riepilogo.
-- Salvataggio automatico, stampa/PDF, esportazione JSON.
-- PWA installabile e offline.
+## Archivio scarti
+- De Martini: 185, 180, 170, 155, 150, 125, 110, 95 cm
+- Leani: 187, 157, 142, 105, 103, 100, 95, 88 cm
+- Slate&Marble: 172, 157, 142, 105, 103, 100, 95, 88 cm
 
-Le formule di cassa a pannelli e gabbia restano da collaudare.
+## Logica operativa
+- Confronto dei tre pacchi per ogni misura di taglio.
+- Ricerca di 1..N tagli uguali + miglior scarto archivio.
+- Proposta di combinazioni miste tra misure del progetto.
+- Le combinazioni miste sono eseguite per lotti: prima una misura su tutte le tavole, residui accantonati, poi la misura successiva.
+- OSB/Binder, legni sotto, travetti e piantoni sono esclusi dal motore tavole 2,2 cm.
+- I pannelli assemblati possono essere ottimizzati come schema di lunghezza; il numero di tavole necessario dipende dallo sviluppo del pannello, perché la V3 non contiene una larghezza utile standard della tavola.
