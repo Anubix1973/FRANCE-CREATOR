@@ -1,21 +1,25 @@
-# FRANCE CREATOR V3.1 — Cut Optimizer
+# FRANCE CREATOR V3.2 — Fincantieri + Cut Optimizer
 
-Add-on integrato per l'ottimizzazione delle tavole da 2,2 cm.
+Estende FRANCE CREATOR V3.1 con la nuova tipologia **Cassa tipo Fincantieri**.
 
-## Parametri fissi
-- Pacchi: 401,5 cm · 450 cm · 504 cm
-- Perdita lama prudenziale: 0,5 cm per ogni taglio
-- Anche il rifilo finale dello scarto consuma 0,5 cm
+## Ricetta Fincantieri
+Le quote della ricetta sono interne nette. `t` è lo spessore delle tavole/pannelli (default 2,2 cm), `f` lo spessore dei legni fondo (default 5 cm).
 
-## Archivio scarti
-- De Martini: 185, 180, 170, 155, 150, 125, 110, 95 cm
-- Leani: 187, 157, 142, 105, 103, 100, 95, 88 cm
-- Slate&Marble: 172, 157, 142, 105, 103, 100, 95, 88 cm
+- Fondo: TAGLIO = larghezza interna; SVILUPPO = lunghezza interna.
+- Legni fondo: lunghezza interna + 2t; direzione lunghezza.
+- Legni sotto fondo: larghezza interna + 2t; direzione larghezza.
+- Testate: TAGLIO = altezza interna + t; SVILUPPO = larghezza interna.
+- Listelli testate: larghezza interna + 2t.
+- Altezze: TAGLIO = altezza interna + t + f; SVILUPPO = lunghezza interna + 2t.
+- Coperchio: TAGLIO = larghezza interna + 2t; SVILUPPO = lunghezza interna + 2t.
+- Listelli coperchio: lunghezza interna + 4t (con t=2,2 → +8,8 cm).
 
-## Logica operativa
-- Confronto dei tre pacchi per ogni misura di taglio.
-- Ricerca di 1..N tagli uguali + miglior scarto archivio.
-- Proposta di combinazioni miste tra misure del progetto.
-- Le combinazioni miste sono eseguite per lotti: prima una misura su tutte le tavole, residui accantonati, poi la misura successiva.
-- OSB/Binder, legni sotto, travetti e piantoni sono esclusi dal motore tavole 2,2 cm.
-- I pannelli assemblati possono essere ottimizzati come schema di lunghezza; il numero di tavole necessario dipende dallo sviluppo del pannello, perché la V3 non contiene una larghezza utile standard della tavola.
+Le quantità di legni e listelli sono campi modificabili. Default iniziali: 3 legni fondo, 3 legni sotto fondo, 2 listelli per testata, 2 listelli coperchio.
+
+## Cut Optimizer 2,2 cm
+Rimane invariato rispetto alla V3.1:
+- pacchi 401,5 / 450 / 504 cm;
+- perdita lama prudenziale 0,5 cm per taglio;
+- archivio scarti De Martini / Leani / Slate&Marble;
+- combinazioni miste eseguite per lotti;
+- i legni fondo/sotto Fincantieri sono esclusi dall’ottimizzatore 2,2 cm, mentre pannelli e listelli da 2,2 cm sono inclusi.

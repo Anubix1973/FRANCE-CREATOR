@@ -1,4 +1,4 @@
-const CACHE='france-creator-v3-4-cutopt';
+const CACHE='france-creator-v3-5-fincantieri';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',event=>event.waitUntil(
   caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())
