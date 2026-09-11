@@ -1,18 +1,20 @@
-# FRANCE CREATOR V4.0
+# FRANCE CREATOR V4.1
 
-Salto di generazione rispetto alla V3.3: anagrafica reale dei materiali disponibili, validazione dimensionale, pannelli con larghezza tavola opzionale, distinta produttiva accorpata e un solo piano di taglio operativo.
+Revisione della V4.0 che mantiene il motore parametrico V4 ma ripristina il colpo d'occhio operativo della V3.3: il piano di taglio è organizzato per misura di pacco, con bordino verde, materiale, quantità da prelevare, sequenza dei tagli e sfrido.
 
 ## Regole principali
 - Tavole: lunghezza + larghezza opzionale + spessore.
-- Travetti: lunghezza + due lati sezione obbligatori.
-- Preset tavole: 401,5 / 450 / 504 cm sp. 2,2; 200 / 250 / 300 cm sp. 1,8.
-- Preset travetti: 404 / 454 / 505 cm, sezione 9,5 × 4,1.
+- Se tutte le tavole attive di uno spessore hanno la larghezza dichiarata, il conteggio è esatto e il piano indica quante tavole prelevare.
+- Se almeno una larghezza attiva manca, per quello spessore il piano resta a pannelli: numero pannelli + TAGLIO + SVILUPPO, senza inventare il numero di tavole.
+- Travetti: lunghezza + due lati della sezione obbligatori.
+- Compatibilità delle sezioni verificata prima del piano.
 - Kerf prudenziale: 0,5 cm per taglio.
-- Rifilatura pannelli: 0,5 cm per pannello sullo sviluppo complessivo.
-- Se la larghezza tavola è disattivata, il numero di tavole non viene calcolato.
-- Nessuna sovrapproduzione volontaria: il piano usa solo pezzi richiesti.
-- Scarti archivio De Martini / Leani / Slate&Marble valutati solo sul residuo finale.
-- Prezzo €/m³ riferito al volume geometrico netto conteggiato, non al materiale lordo consumato.
+- Rifilatura pannelli: 0,5 cm per pannello sullo sviluppo cumulativo.
+- Nessuna sovrapproduzione volontaria: una misura esce dal problema quando il suo fabbisogno è esaurito.
+- Gli scarti archivio possono essere combinati in più pezzi sullo stesso residuo; lo sfrido morto è mostrato per pezzo e totale.
+- Un solo piano operativo; nessuna sezione Alternative/Consigliato.
+- Le distinte restano separate per elemento; eliminato il riepilogo finale ridondante.
+- Prezzo €/m³ sul volume geometrico netto, senza kerf/rifili/sfridi.
 
-## Nota V4.0
-Le tavolette del gabbione e i listelli con sezione non ancora formalizzata restano fuori dall'ottimizzatore fino a quando saranno note le rispettive sezioni/pacchi. I rinforzi restano volutamente esclusi.
+## Nota
+Le tavolette del gabbione e gli altri componenti con sezione non ancora formalizzata restano fuori dall'ottimizzatore. I rinforzi restano esclusi dal volume.
