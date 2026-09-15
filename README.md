@@ -1,53 +1,27 @@
-# FRANCE CREATOR V4.2.1
+# FRANCE CREATOR V4.2.2
 
-## Patch stampa + codifica bordi
+## Patch leggibilità sequenze di taglio
 
-- Stampa completamente chiara: sfondo bianco, testo nero, tabelle e schemi leggibili, niente fondi scuri.
-- In stampa il piano taglio passa a 2 colonne per aumentare la leggibilità.
-- Famiglia materiale: tavole = verde; travetti = viola.
-- Variante materiale: 2,2 / 9,5×4,1 = bordo continuo; 1,8 / 7,5×4,1 = bordo tratteggiato; ulteriori varianti = puntinato o doppio.
-- Motore France Cut Optimizer V4.2 invariato.
-- Cache PWA aggiornata a `france-creator-v4-2-1`.
+Questa versione mantiene **invariato il motore France Cut Optimizer V4.2.1** e modifica soltanto la presentazione operativa degli schemi esatti.
 
-V4.2 è il successore della V3.3 “ibridato” con il magazzino parametrico della V4.1.
-Mantiene la lettura operativa per pacco della V3.3, ma sostituisce la scelta greedy della V4.1 con un'ottimizzazione globale dei fabbisogni compatibili.
+### Nuova lettura macchina
 
-## Cosa cambia nell'ottimizzatore
+Una riga del tipo:
 
-- Il fabbisogno produttivo è **esatto**: non vengono creati pezzi non richiesti per riempire una tavola.
-- Il motore genera gli schemi compatibili con i pacchi realmente attivi in magazzino e costruisce un problema globale di taglio.
-- La fase principale usa una **rilassata lineare globale** sugli schemi di taglio; la parte intera residua viene chiusa con una ricerca esatta/beam sulla coda. Se il problema diventa troppo grande, resta disponibile un fallback euristico con rifinitura locale.
-- Uno stesso componente può essere distribuito fra pacchi di lunghezza diversa quando questo migliora l'incastro complessivo.
-- Il numero minimo assoluto di tavole/travetti non è un vincolo: una o più unità grezze aggiuntive sono ammesse se riducono sensibilmente lo scarto morto.
-- Lo **scarto morto** ha una penalità crescente: pochi centimetri sono tollerati, gli sfridi più importanti diventano rapidamente costosi per l'ottimizzatore.
-- Le misure di **recupero utile** restano paracadute: salvano materiale quando conviene, ma ogni pezzo archiviato ha un costo di gestione per evitare il comportamento eccessivamente “salva tutto” della V3.3.
-- A parità pratica il motore tende a contenere recuperi utili, pezzi grezzi usati e numero di schemi.
-- Kerf prudenziale: **0,5 cm per taglio**.
+`3 travetti → 120,4 ★Piantoni + 99,0 ◆Travetti fondo + 79,0 ▲Travetti fondo + 2 × 74,0 ★Travetti fondo`
 
-## Tracciabilità visiva V4.2
+viene ora presentata così:
 
-- **Bordo verde** = famiglia TAVOLE.
-- **Bordo arancio** = famiglia TRAVETTI.
-- La **tonalità cambia** quando cambia lo spessore/sezione rilevante: ad esempio tavole 2,2 e 1,8 hanno due verdi diversi; travetti 9,5×4,1 e 7,5×4,1 hanno due aranci diversi.
-- Ogni elemento/gabbione riceve automaticamente un **simbolo neutro** nella propria distinta (◆ ▲ ★ ● ...).
-- Nell'ottimizzazione lo stesso simbolo ricompare **colorato in base al componente** e accompagnato dal nome corto: `◆ Testate`, `◆ Fondo`, `◆ Coperchio`, `◆ Piantoni`, ecc.
-- La combinazione **simbolo + componente** resta coerente anche se il fabbisogno viene distribuito fra pacchi diversi.
-- `Testate finali esterne` è stato semplificato in **Testate**.
+`3 travetti`  
+`→ 1 × 120,4 ★Piantoni`  
+`→ 1 × 99,0 ◆Travetti fondo`  
+`→ 1 × 79,0 ▲Travetti fondo`  
+`→ 2 × 74,0 ★Travetti fondo`
 
-## Magazzino e compatibilità
+Nessuna etichetta “Schema 1 / Schema 2”: la quantità di tavole o travetti è già l’intestazione operativa sufficiente.
 
-- Tavole: lunghezza + spessore; larghezza opzionale con checkbox.
-- Se tutte le tavole attive dello spessore richiesto hanno larghezza dichiarata, il conteggio è esatto.
-- Se almeno una larghezza è ignota, il piano rimane a pannelli senza inventare il numero di tavole.
-- Travetti: lunghezza + due lati della sezione obbligatori.
-- Sezioni e spessori vengono confrontati normalizzando al decimo di centimetro, senza tolleranze “fuzzy”.
-- Materiale mancante o troppo corto blocca il piano con errore esplicito.
-
-## Gabbione
-
-Per quote interne, la ricetta corrente mantiene le formule V4.1. La voce `Testate finali esterne` è rinominata `Testate` senza modificarne la geometria.
-Tavolette e rinforzi restano esclusi dall'ottimizzatore/volume finché la loro sezione di magazzino non viene formalizzata.
-
-## Compatibilità dati
-
-La V4.2 continua a usare la chiave `franceCreatorV4` di localStorage, così i dati della V4.1 restano leggibili.
+- Quantità + misura sono allineate verticalmente per parlare direttamente con la macchina.
+- Simbolo, colore e nome componente restano identici alla V4.2.1 e servono come informazione secondaria di destinazione.
+- Recuperi utili, scarto morto, bordi materiale, stampa chiara e logica di ottimizzazione restano invariati.
+- Cache PWA aggiornata a `france-creator-v4-2-2`.
+- Dati salvati ancora sulla chiave `franceCreatorV4`: nessuna migrazione necessaria.
