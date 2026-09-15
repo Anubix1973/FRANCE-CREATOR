@@ -1,4 +1,13 @@
-# FRANCE CREATOR V4.2 — France Cut Optimizer
+# FRANCE CREATOR V4.2.1
+
+## Patch stampa + codifica bordi
+
+- Stampa completamente chiara: sfondo bianco, testo nero, tabelle e schemi leggibili, niente fondi scuri.
+- In stampa il piano taglio passa a 2 colonne per aumentare la leggibilità.
+- Famiglia materiale: tavole = verde; travetti = viola.
+- Variante materiale: 2,2 / 9,5×4,1 = bordo continuo; 1,8 / 7,5×4,1 = bordo tratteggiato; ulteriori varianti = puntinato o doppio.
+- Motore France Cut Optimizer V4.2 invariato.
+- Cache PWA aggiornata a `france-creator-v4-2-1`.
 
 V4.2 è il successore della V3.3 “ibridato” con il magazzino parametrico della V4.1.
 Mantiene la lettura operativa per pacco della V3.3, ma sostituisce la scelta greedy della V4.1 con un'ottimizzazione globale dei fabbisogni compatibili.
